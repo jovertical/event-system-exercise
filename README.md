@@ -39,7 +39,7 @@ apt-get update
 
 ## Install PHP + Extensions.
 apt-get install -y php7.4-fpm
-apt-get install -y php7.4-{curl,mbstring,pdo,pgsql,xml}
+apt-get install -y php7.4-{curl,mbstring,pdo,mysql,xml}
 
 ## Install Composer
 apt-get install -y composer

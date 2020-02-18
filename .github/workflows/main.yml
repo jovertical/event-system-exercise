@@ -17,7 +17,7 @@ jobs:
         uses: shivammathur/setup-php@v1
         with:
           php-version: '7.4'
-          extensions: curl, mbstring, openssl, pdo, sqlite3, xml
+          extensions: curl, mbstring, openssl, sqlite3, xml
           coverage: none
 
       - name: Install dependencies
