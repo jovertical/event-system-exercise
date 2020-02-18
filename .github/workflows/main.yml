@@ -1,0 +1,74 @@
+name: Actions
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  Build-Deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v1
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v1
+        with:
+          php-version: '7.4'
+          extensions: curl, mbstring, openssl, pdo, sqlite3, xml
+          coverage: none
+
+      - name: Install dependencies
+        run: composer install -q --no-ansi --no-interaction --no-scripts --no-suggest --no-progress --prefer-dist
+
+      - name: Decrypt configuration file
+        run: ./.github/scripts/decrypt_secret.sh
+        env:
+          SECRET_PASSPHRASE: ${{ secrets.SECRET_PASSPHRASE_CI }}
+          APP_ENV: ci
+
+      - name: Run the test suite
+        run: composer test
+
+      - name: Deploy
+        uses: appleboy/ssh-action@master
+        with: 
+          host: 128.199.224.8
+          username: root
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            cd /var/www/event-system-exercise            
+            
+            # Put the app in to maintenance mode.
+            php artisan down
+            
+            # Update everything.
+            git reset --hard && git fetch --all && git pull origin master
+            rm -rf .env && SECRET_PASSPHRASE=${{ secrets.SECRET_PASSPHRASE_PRODUCTION }} APP_ENV=production sh .github/scripts/decrypt_secret.sh
+            composer install --optimize-autoloader --no-dev
+
+            # Refresh NGINX configurations.
+            unlink /etc/nginx/sites-enabled/nginx.conf
+            rm -f /etc/nginx/sites-available/nginx.conf
+            cp nginx.conf /etc/nginx/sites-available/
+            ln -s /etc/nginx/sites-available/nginx.conf /etc/nginx/sites-enabled/
+            nginx -t
+            systemctl reload nginx
+
+            # Optimize Laravel.
+            php artisan config:cache
+            php artisan route:cache
+            php artisan view:cache
+
+            # Run the migrations.
+            php artisan migrate --force
+
+            # Give proper file ownership & permissions.
+            chown -R www-data bootstrap/cache storage
+            chmod 775 bootstrap/cache storage
+
+            # Finish deployment.
+            php artisan up
+
