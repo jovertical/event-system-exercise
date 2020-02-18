@@ -8,7 +8,6 @@ An app to create multiple events for a given date built using the following tech
 - [vue-toastification](https://github.com/Maronato/vue-toastification) - Vue notifications made easy!
 - [Tailwindcss](https://tailwindcss.com/) - A utility-first CSS framework for rapidly building custom designs.
 - [DigitalOcean](https://www.digitalocean.com/) - Cloud computing platform.
-- [remotemysql.com](https://remotemysql.com) - A free remote MySQL Database hosting.
 
 ## Preview
 
