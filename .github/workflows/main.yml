@@ -30,7 +30,7 @@ jobs:
           APP_ENV: ci
 
       - name: Run the test suite
-        run: ./vendor/bin/phpunit
+        run: composer test
 
       - name: Deploy
         uses: appleboy/ssh-action@master
