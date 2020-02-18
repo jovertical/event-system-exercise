@@ -9,6 +9,7 @@ Vue.use(Toast)
 new Vue({
     el: '#root',
     data: {
+        loading: false,
         name: '',
         from: null,
         to: null,
@@ -28,6 +29,8 @@ new Vue({
             return this.event.days.filter(day => day.date === date).length > 0
         },
         addEvent: async function () {
+            this.loading = true
+
             try {
                 const res = await axios.post('/api/events', {
                     name: this.name,
@@ -37,9 +40,12 @@ new Vue({
                 })
 
                 this.event = res.data
+                this.loading = false
 
                 Vue.$toast.success('Event saved!')
             } catch ({ response }) {
+                this.loading = false
+
                 const message = response.status === 422 
                     ? response.data.message 
                     : 'Something went wrong'

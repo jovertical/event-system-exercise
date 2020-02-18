@@ -33508,6 +33508,7 @@ Vue.use(vue_toastification__WEBPACK_IMPORTED_MODULE_3___default.a);
 new Vue({
   el: '#root',
   data: {
+    loading: false,
     name: '',
     from: null,
     to: null,
@@ -33537,8 +33538,9 @@ new Vue({
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                _context.prev = 0;
-                _context.next = 3;
+                this.loading = true;
+                _context.prev = 1;
+                _context.next = 4;
                 return axios.post('/api/events', {
                   name: this.name,
                   from: moment(this.from).format('YYYY-MM-DD'),
@@ -33546,26 +33548,28 @@ new Vue({
                   days: this.days
                 });
 
-              case 3:
+              case 4:
                 res = _context.sent;
                 this.event = res.data;
+                this.loading = false;
                 Vue.$toast.success('Event saved!');
-                _context.next = 13;
+                _context.next = 16;
                 break;
 
-              case 8:
-                _context.prev = 8;
-                _context.t0 = _context["catch"](0);
+              case 10:
+                _context.prev = 10;
+                _context.t0 = _context["catch"](1);
                 response = _context.t0.response;
+                this.loading = false;
                 message = response.status === 422 ? response.data.message : 'Something went wrong';
                 Vue.$toast.error(message);
 
-              case 13:
+              case 16:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, this, [[0, 8]]);
+        }, _callee, this, [[1, 10]]);
       }));
 
       function addEvent() {

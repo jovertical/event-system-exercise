@@ -83,8 +83,9 @@
                         </label>
                     </div>
                     <div class="w-full px-2">
-                        <button type="submit" class="bg-indigo p-2 rounded shadow-sm text-white">
-                            Save
+                        <button type="submit" class="flex justify-center bg-indigo w-16 p-2 rounded shadow-sm text-white">
+                            <div v-if="loading" class="loader w-4 h-4"></div>
+                            <div v-else>Save</div>
                         </button>
                     </div>
                 </form>
