@@ -6540,10 +6540,10 @@ uuid@^3.0.1, uuid@^3.3.2:
   resolved "https://registry.yarnpkg.com/uuid/-/uuid-3.4.0.tgz#b23e4358afa8a202fe7a100af1f5f883f02007ee"
   integrity sha512-HjSDRw6gZE5JMggctHBcjVak08+KEVhSIiDzFnT9S9aegmp85S/bReBVTb4QTFaRNptJ9kuYaNhnbNEOkbKb/A==
 
-v-calendar@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/v-calendar/-/v-calendar-1.0.1.tgz#40092c7d4475f3183350b42471af81759c9a8600"
-  integrity sha512-TIaB2ASVBv7DzRIzpSwE33khQlnyTi5U4lBzxY1mP7Zz1nv6f3wW/WOhNGBsWhVkXERU6tuc3/7gwaybNJY+vQ==
+v-calendar@^1.0.0-beta.23:
+  version "1.0.0-beta.23"
+  resolved "https://registry.yarnpkg.com/v-calendar/-/v-calendar-1.0.0-beta.23.tgz#6bd5426a66100340b6202a14e9379c174fc325ea"
+  integrity sha512-4THp5AU7k6SfoA+J1lTUG/brVPBLU3ib/HxGTS5maxD4WOSAoNSFimqLeu1oveZ8YXAIibnQmm6mBWoRQkd1oQ==
   dependencies:
     date-fns "^2.6.0"
     lodash "^4.17.11"
