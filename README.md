@@ -1,12 +1,16 @@
 ## Event System Exercise
 
-An app to create multiple events for a given date built using the following technologies:
+An app to create multiple events for a given date built using the following technologies & services:
 
 - [Laravel](https://laravel.com/) - The PHP Framework for Web Artisans
 - [Vue.js](https://vuejs.org/) - The Progressive JavaScript Framework
+- [v-calendar](https://vcalendar.io/) - An elegant calendar and datepicker plugin for Vuejs.
+- [vue-toastification](https://github.com/Maronato/vue-toastification) - Vue notifications made easy!
 - [Tailwindcss](https://tailwindcss.com/) - A utility-first CSS framework for rapidly building custom designs.
+- [DigitalOcean](https://www.digitalocean.com/) - Cloud computing platform.
+- [remotemysql.com](https://remotemysql.com) - A free remote MySQL Database hosting.
 
-## 🌐 Preview
+## Preview
 
 Visit: [128.199.224.8](http://128.199.224.8) to see the preview
 
