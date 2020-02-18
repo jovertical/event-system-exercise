@@ -22,7 +22,7 @@
             <div class="flex items-center h-12 px-4 border-b">
                 <h2 class="text-lg font-bold">Add an Event</h2>
             </div>
-            <div class="flex flex-wrap justify-between p-2 lg:p-4">
+            <div class="flex flex-wrap justify-center lg:justify-between p-2 lg:p-4">
                 <form v-on:submit.prevent="addEvent" class="flex flex-col w-full lg:w-1/3 -mx-2 mb-4">
                     <div class="flex flex-col w-full mb-4 px-2">
                         <label class="text-sm mb-2">Event</label>
@@ -89,13 +89,13 @@
                         </button>
                     </div>
                 </form>
-                <div class="w-full lg:w-2/3">
+                <div class="w-full lg:w-2/3 p-2 lg:p-0">
                     <v-calendar is-expanded :from-page="fromPage">
                         <template slot="day-content" slot-scope="props">
                             <div v-if="props.day.inMonth" class="flex flex-col items-center h-24">
                                 <label v-text="props.day.day" class="mb-2"></label>
                                 <div v-if="event.days" v-show="hasEvents(props.day.id)">
-                                    <label v-text="event.name" class="block rounded-lg w-24 mb-2 p-1 bg-indigo text-white text-center"></label>
+                                    <label v-text="event.name" class="block rounded-lg w-12 lg:w-24 mb-2 p-1 bg-indigo text-white text-center"></label>
                                 </div>
                             </div>
                         </template>
