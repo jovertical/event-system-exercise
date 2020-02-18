@@ -18,12 +18,12 @@
     </head>
     <body class="bg-gray-100 h-screen antialiased leading-none">
         @include('partials.header')
-        <div id="root" class="bg-white shadow-md rounded w-10/12 mx-auto mt-24">
+        <div id="root" class="bg-white shadow-md rounded w-11/12 lg:w-10/12 mx-auto mt-24">
             <div class="flex items-center h-12 px-4 border-b">
                 <h2 class="text-lg font-bold">Add an Event</h2>
             </div>
-            <div class="flex justify-between p-4">
-                <form class="flex flex-col w-1/3 -mx-2">
+            <div class="flex flex-wrap justify-between p-2 lg:p-4">
+                <form v-on:submit.prevent="addEvent" class="flex flex-col w-full lg:w-1/3 -mx-2 mb-4">
                     <div class="flex flex-col w-full mb-4 px-2">
                         <label class="text-sm mb-2">Event</label>
                         <input v-model="name" type="text" class="rounded border border-gray-400 focus:shadow h-10 p-2">
@@ -83,16 +83,19 @@
                         </label>
                     </div>
                     <div class="w-full px-2">
-                        <button class="bg-indigo p-2 rounded shadow-sm text-white">
+                        <button type="submit" class="bg-indigo p-2 rounded shadow-sm text-white">
                             Save
                         </button>
                     </div>
                 </form>
-                <div class="w-2/3">
-                    <v-calendar is-expanded>
+                <div class="w-full lg:w-2/3">
+                    <v-calendar is-expanded :from-page="fromPage">
                         <template slot="day-content" slot-scope="props">
-                            <div class="flex items-center justify-center h-16" v-if="props.day.inMonth">
-                                @{{ props.day.day }}
+                            <div v-if="props.day.inMonth" class="flex flex-col items-center h-24">
+                                <label v-text="props.day.day" class="mb-2"></label>
+                                <div v-if="event.days" v-show="hasEvents(props.day.id)">
+                                    <label v-text="event.name" class="block rounded-lg w-24 mb-2 p-1 bg-indigo text-white text-center"></label>
+                                </div>
                             </div>
                         </template>
                     </v-calendar>
@@ -100,16 +103,5 @@
             </div>
         </div>
         <script src="{{ mix('js/app.js') }}"></script>
-        <script>
-            new Vue({
-                el: '#root',
-                data: {
-                    name: '',
-                    from: null,
-                    to: null,
-                    days: [],
-                }
-            })
-        </script>
     </body>
 </html>
