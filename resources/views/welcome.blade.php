@@ -54,31 +54,31 @@
                     </div>
                     <div class="flex justify-between w-full mb-4 px-2">
                         <label> 
-                            <input v-model="days" id="monday" value="monday" type="checkbox" />
+                            <input v-model="days" id="Mon" value="Mon" type="checkbox" />
                             <span class="text-sm">Mon</span>
                         </label>
                         <label>
-                            <input v-model="days" id="tuesday" value="tuesday" type="checkbox" />
+                            <input v-model="days" id="Tue" value="Tue" type="checkbox" />
                             <span class="text-sm">Tue</span>
                         </label>
                         <label>
-                            <input v-model="days" id="wednesday" value="wednesday" type="checkbox" />
+                            <input v-model="days" id="Wed" value="Wed" type="checkbox" />
                             <span class="text-sm">Wed</span>
                         </label>
                         <label>
-                            <input v-model="days" id="thursday" value="thursday" type="checkbox" />
+                            <input v-model="days" id="Thu" value="Thu" type="checkbox" />
                             <span class="text-sm">Thu</span>
                         </label>
                         <label>
-                            <input v-model="days" id="friday" value="friday" type="checkbox" />
+                            <input v-model="days" id="Fri" value="Fri" type="checkbox" />
                             <span class="text-sm">Fri</span>
                         </label>
                         <label>
-                            <input v-model="days" id="saturday" value="saturday" type="checkbox" />
+                            <input v-model="days" id="Sat" value="Sat" type="checkbox" />
                             <span class="text-sm">Sat</span>
                         </label>
                         <label>
-                            <input v-model="days" id="sunday" value="sunday" type="checkbox" />
+                            <input v-model="days" id="Sun" value="Sun" type="checkbox" />
                             <span class="text-sm">Sun</span>
                         </label>
                     </div>
